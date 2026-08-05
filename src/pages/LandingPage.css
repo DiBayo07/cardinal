@@ -38,7 +38,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--red-gradient);
+  background: linear-gradient(135deg, #0A192F 0%, #172A45 100%);
   opacity: 0.9;
 }
 

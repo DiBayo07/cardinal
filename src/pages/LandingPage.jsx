@@ -159,13 +159,17 @@ const LandingPage = () => {
           >
             {reviews.length > 0 ? (
               reviews.map((review) => {
-                const isInstagram = review.videoUrl.includes('instagram.com');
-                const isTikTok = review.videoUrl.includes('tiktok.com');
+                let rawUrl = review.videoUrl ? review.videoUrl.trim() : '';
+                if (rawUrl && !rawUrl.startsWith('http')) {
+                  rawUrl = 'https://' + rawUrl;
+                }
+                const isInstagram = rawUrl.includes('instagram.com');
+                const isTikTok = rawUrl.includes('tiktok.com');
                 
-                let embedUrl = review.videoUrl;
+                let embedUrl = rawUrl;
                 if (isInstagram) {
                   // Ensure URL ends with /embed/
-                  const baseUrl = review.videoUrl.split('?')[0].replace(/\/$/, '');
+                  const baseUrl = rawUrl.split('?')[0].replace(/\/$/, '');
                   embedUrl = `${baseUrl}/embed/`;
                 }
 
@@ -174,7 +178,7 @@ const LandingPage = () => {
                     <div className="video-wrapper" style={isTikTok ? { paddingBottom: 0, height: 'auto', display: 'flex', justifyContent: 'center' } : {}}>
                       {isTikTok ? (
                         <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
-                          <TikTokEmbed url={review.videoUrl} width="100%" />
+                          <TikTokEmbed url={rawUrl} width="100%" />
                         </div>
                       ) : (
                         <iframe 

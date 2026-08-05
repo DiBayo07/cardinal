@@ -20,8 +20,8 @@
 }
 
 .header-logo-img {
-  height: 45px;
-  width: 45px;
+  height: 60px;
+  width: 60px;
   border-radius: 50%;
   object-fit: cover;
   transition: transform 0.3s ease;

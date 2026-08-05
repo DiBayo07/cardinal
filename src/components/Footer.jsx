@@ -10,16 +10,15 @@ const Footer = () => {
     <footer className="footer" id="contacts">
       <div className="container footer-content">
         <div className="footer-col">
-          <div className="logo footer-logo">
-            <span className="logo-text" style={{color: 'white'}}>Cardinal Education</span>
-            <span className="logo-badge">KG</span>
+          <div className="logo footer-logo" onClick={() => window.location.reload()} style={{ cursor: 'pointer' }}>
+            <img src="./logo.png" alt="Cardinal Education" className="header-logo-img" />
           </div>
           <p className="footer-copyright">{t('footer.copyright')}</p>
         </div>
         
         <div className="footer-col">
           <div className="footer-contact-item">
-            <FaWhatsapp size={24} color="var(--color-accent)" />
+            <FaWhatsapp size={24} color="var(--color-accent-gold)" />
             <div>
               <strong>WhatsApp:</strong>
               <br />
@@ -27,11 +26,13 @@ const Footer = () => {
             </div>
           </div>
           <div className="footer-contact-item">
-            <FaMapMarkerAlt size={24} color="var(--color-accent)" />
+            <FaMapMarkerAlt size={24} color="var(--color-accent-gold)" />
             <div>
               <strong>Адрес:</strong>
               <br />
-              {t('footer.address')}
+              <a href="https://go.2gis.com/GYHNm" target="_blank" rel="noreferrer" style={{ textDecoration: 'underline' }}>
+                {t('footer.address')}
+              </a>
             </div>
           </div>
         </div>

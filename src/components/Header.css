@@ -17,24 +17,18 @@
 .logo {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-family: var(--font-display);
 }
 
-.logo-text {
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--color-text);
-  letter-spacing: -0.5px;
+.header-logo-img {
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
-.logo-badge {
-  background-image: var(--gold-gradient);
-  color: #2C1C08;
-  padding: 4px 8px;
-  border-radius: 6px;
-  font-size: 0.8rem;
-  font-weight: 800;
+.header-logo-img:hover {
+  transform: scale(1.05);
 }
 
 .nav-menu {

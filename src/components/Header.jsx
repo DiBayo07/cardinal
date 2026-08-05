@@ -21,9 +21,8 @@ const Header = () => {
   return (
     <header className="header glass">
       <div className="container header-content">
-        <div className="logo">
-          <span className="logo-text">Cardinal</span>
-          <span className="logo-badge">KG</span>
+        <div className="logo" onClick={() => window.location.reload()} style={{ cursor: 'pointer' }}>
+          <img src="./logo.png" alt="Cardinal Education" className="header-logo-img" />
         </div>
         
         <nav className="nav-menu">

@@ -162,24 +162,28 @@ const LandingPage = () => {
                 const isInstagram = review.videoUrl.includes('instagram.com');
                 const isTikTok = review.videoUrl.includes('tiktok.com');
                 
+                let embedUrl = review.videoUrl;
+                if (isInstagram) {
+                  // Ensure URL ends with /embed/
+                  const baseUrl = review.videoUrl.split('?')[0].replace(/\/$/, '');
+                  embedUrl = `${baseUrl}/embed/`;
+                }
+
                 return (
                   <motion.div className="review-card glass" key={review.id} variants={fadeUp}>
-                    <div className="video-wrapper" style={isInstagram || isTikTok ? { paddingBottom: 0, height: 'auto', display: 'flex', justifyContent: 'center' } : {}}>
-                      {isInstagram ? (
-                        <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
-                          <InstagramEmbed url={review.videoUrl} width="100%" />
-                        </div>
-                      ) : isTikTok ? (
+                    <div className="video-wrapper" style={isTikTok ? { paddingBottom: 0, height: 'auto', display: 'flex', justifyContent: 'center' } : {}}>
+                      {isTikTok ? (
                         <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
                           <TikTokEmbed url={review.videoUrl} width="100%" />
                         </div>
                       ) : (
                         <iframe 
-                          src={review.videoUrl} 
+                          src={embedUrl} 
                           title={`Review by ${review.name}`} 
                           frameBorder="0" 
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                           allowFullScreen
+                          scrolling="no"
                         ></iframe>
                       )}
                     </div>

@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { FaGraduationCap, FaGlobeEurope, FaLeaf, FaMap } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import { InstagramEmbed, TikTokEmbed } from 'react-social-media-embed';
 import './LandingPage.css';
 
 const LandingPage = () => {
@@ -157,23 +158,38 @@ const LandingPage = () => {
             variants={staggerContainer}
           >
             {reviews.length > 0 ? (
-              reviews.map((review) => (
-                <motion.div className="review-card glass" key={review.id} variants={fadeUp}>
-                  <div className="video-wrapper">
-                    <iframe 
-                      src={review.videoUrl} 
-                      title={`Review by ${review.name}`} 
-                      frameBorder="0" 
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                      allowFullScreen
-                    ></iframe>
-                  </div>
-                  <div className="review-info">
-                    <h4 className="gold-text">{review.name}</h4>
-                    <p>{review.university}</p>
-                  </div>
-                </motion.div>
-              ))
+              reviews.map((review) => {
+                const isInstagram = review.videoUrl.includes('instagram.com');
+                const isTikTok = review.videoUrl.includes('tiktok.com');
+                
+                return (
+                  <motion.div className="review-card glass" key={review.id} variants={fadeUp}>
+                    <div className="video-wrapper" style={isInstagram || isTikTok ? { paddingBottom: 0, height: 'auto', display: 'flex', justifyContent: 'center' } : {}}>
+                      {isInstagram ? (
+                        <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+                          <InstagramEmbed url={review.videoUrl} width="100%" />
+                        </div>
+                      ) : isTikTok ? (
+                        <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+                          <TikTokEmbed url={review.videoUrl} width="100%" />
+                        </div>
+                      ) : (
+                        <iframe 
+                          src={review.videoUrl} 
+                          title={`Review by ${review.name}`} 
+                          frameBorder="0" 
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                          allowFullScreen
+                        ></iframe>
+                      )}
+                    </div>
+                    <div className="review-info">
+                      <h4 className="gold-text">{review.name}</h4>
+                      <p>{review.university}</p>
+                    </div>
+                  </motion.div>
+                );
+              })
             ) : (
               <p className="text-center">Загрузка отзывов...</p>
             )}

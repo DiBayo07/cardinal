@@ -1,0 +1,59 @@
+{
+  "nav": {
+    "about": "About Us",
+    "services": "Services & Countries",
+    "reviews": "Reviews",
+    "contacts": "Contacts"
+  },
+  "hero": {
+    "title": "Admission to Top 30 World Universities",
+    "subtitle": "We help applicants from Kyrgyzstan enter prestigious universities in the USA, Europe, Canada, and Asia. Your future starts here.",
+    "cta": "Get Consultation"
+  },
+  "about": {
+    "title": "About Us",
+    "text": "Cardinal Education KG is a team of experts with years of experience. We help applicants from Kyrgyzstan realize their dream of studying abroad. From choosing a university to getting a visa, we guide you at every stage."
+  },
+  "services": {
+    "title": "Our Destinations",
+    "usa": {
+      "title": "USA",
+      "desc": "Top 30 US Universities: Harvard, MIT, Stanford."
+    },
+    "europe": {
+      "title": "Europe",
+      "desc": "Prestigious universities in the UK, Germany, Switzerland."
+    },
+    "canada": {
+      "title": "Canada",
+      "desc": "University of Toronto, UBC, McGill and others."
+    },
+    "asia": {
+      "title": "Asia",
+      "desc": "Leading universities in Singapore, South Korea, China."
+    }
+  },
+  "reviews": {
+    "title": "Student Reviews"
+  },
+  "cta": {
+    "title": "Start your journey to success today",
+    "text": "Leave a request, and our expert will contact you for a free consultation.",
+    "btn": "Contact on WhatsApp"
+  },
+  "footer": {
+    "address": "Toktogul 170, ground floor, Bishkek",
+    "copyright": "© 2026 Cardinal Education KG. All rights reserved."
+  },
+  "admin": {
+    "loginTitle": "Admin Panel Login",
+    "tokenPlaceholder": "GitHub Personal Access Token",
+    "loginBtn": "Login",
+    "dashboardTitle": "Review Management",
+    "addBtn": "Add Review",
+    "name": "Student Name",
+    "university": "Country/University",
+    "videoUrl": "Video URL",
+    "save": "Save Changes"
+  }
+}

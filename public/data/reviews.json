@@ -1,0 +1,14 @@
+[
+  {
+    "id": "1",
+    "name": "Алина",
+    "university": "University of Toronto, Канада",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"
+  },
+  {
+    "id": "2",
+    "name": "Бектур",
+    "university": "Harvard University, США",
+    "videoUrl": "https://www.youtube.com/embed/tgbNymZ7vqY"
+  }
+]

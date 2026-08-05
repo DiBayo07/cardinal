@@ -1,10 +1,32 @@
+/* Loading Screen */
+.loading-screen {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-bg);
+}
+
+.loader {
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(255, 225, 188, 0.3);
+  border-radius: 50%;
+  border-top-color: var(--color-accent-gold);
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
 /* Hero Section */
 .hero {
   position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background-image: url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+  background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -16,7 +38,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(11, 36, 71, 0.9) 0%, rgba(25, 55, 109, 0.7) 100%);
+  background: var(--red-gradient);
+  opacity: 0.9;
 }
 
 .hero-content {
@@ -28,45 +51,63 @@
 }
 
 .hero-text-box {
-  max-width: 800px;
+  max-width: 850px;
   text-align: center;
-  padding: 50px;
+  padding: 60px 40px;
   border-radius: 20px;
 }
 
 .hero h1 {
-  color: var(--color-white);
   font-size: 3.5rem;
   margin-bottom: 20px;
   line-height: 1.2;
 }
 
 .hero p {
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--color-text-muted);
   font-size: 1.2rem;
+  font-weight: 300;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 @media (max-width: 768px) {
-  .hero h1 { font-size: 2.5rem; }
-  .hero-text-box { padding: 30px 20px; }
+  .hero h1 { font-size: 2.2rem; }
+  .hero-text-box { padding: 40px 20px; }
+  .hero p { font-size: 1rem; }
+  .hero { background-attachment: scroll; }
 }
 
 /* About Section */
 .about-section {
-  background-color: var(--color-white);
+  background-color: var(--color-bg);
+  position: relative;
+}
+
+.about-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 1px;
+  background-image: var(--gold-gradient);
 }
 
 .about-text {
   max-width: 800px;
   margin: 0 auto;
-  font-size: 1.15rem;
-  color: var(--color-text-light);
+  font-size: 1.25rem;
+  color: var(--color-text-muted);
   line-height: 1.8;
+  font-weight: 300;
 }
 
 /* Services Section */
 .services-section {
-  background-color: var(--color-bg);
+  background-color: var(--color-bg-light);
+  border-top: 1px solid rgba(255,255,255,0.02);
 }
 
 .services-grid {
@@ -76,28 +117,45 @@
 }
 
 .service-card {
-  padding: 40px 30px;
-  border-radius: 15px;
+  padding: 50px 30px;
+  border-radius: 20px;
   text-align: center;
-  transition: transform 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+  background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
 }
 
 .service-card:hover {
   transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+  border-color: rgba(255, 225, 188, 0.2);
 }
 
 .service-icon {
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+  display: inline-block;
+  padding: 20px;
+  background: rgba(255, 225, 188, 0.05);
+  border-radius: 50%;
+}
+
+.service-card h3 {
+  font-size: 1.5rem;
+  color: var(--color-text);
+}
+
+.service-card p {
+  color: var(--color-text-muted);
+  font-weight: 300;
 }
 
 /* Reviews Section */
 .reviews-section {
-  background-color: var(--color-white);
+  background-color: var(--color-bg);
 }
 
 .reviews-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 40px;
   justify-content: center;
 }
@@ -107,11 +165,12 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  background: var(--color-bg-light);
 }
 
 .video-wrapper {
   position: relative;
-  padding-bottom: 177.77%; /* 16:9 Aspect Ratio for Shorts/Reels (9:16 = 177.77%) */
+  padding-bottom: 177.77%;
   height: 0;
   overflow: hidden;
   background: #000;
@@ -126,38 +185,59 @@
 }
 
 .review-info {
-  padding: 20px;
-  background: var(--color-primary);
-  color: white;
+  padding: 25px;
   text-align: center;
+  border-top: 2px solid rgba(255, 225, 188, 0.1);
 }
 
 .review-info h4 {
-  color: var(--color-accent);
   margin-bottom: 5px;
+  font-size: 1.2rem;
+}
+
+.review-info p {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
 }
 
 /* CTA Section */
 .cta-section {
-  background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+  background-image: url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  padding: 100px 0;
+  padding: 120px 0;
+  position: relative;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--red-gradient);
+  opacity: 0.85;
 }
 
 .cta-content {
-  padding: 60px;
+  position: relative;
+  z-index: 2;
+  padding: 60px 40px;
   border-radius: 20px;
   max-width: 800px;
   margin: 0 auto;
 }
 
-.cta-content h2 {
-  color: var(--color-white);
+.cta-content p {
+  color: var(--color-text);
+  font-size: 1.2rem;
+  margin-bottom: 30px;
 }
 
-.cta-content p {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 1.2rem;
+@media (max-width: 768px) {
+  .cta-section { background-attachment: scroll; }
+  .cta-content { padding: 40px 20px; }
+  section { padding: 60px 0; }
 }

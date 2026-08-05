@@ -10,5 +10,12 @@
     "name": "Бектур",
     "university": "Harvard University, США",
     "videoUrl": "https://www.youtube.com/embed/tgbNymZ7vqY"
+  },
+  {
+    "name": "Адилет",
+    "university": "Spain,Atletico de Madrid",
+    "videoUrl": "https://youtu.be/5DFU56wQ6B4?si=yg2CeIPDJo2aojBY",
+    "id": "1785930244994",
+    "order": 2
   }
 ]

@@ -1,0 +1,21 @@
+[
+  {
+    "id": "1",
+    "name": "Сафия",
+    "university": "DePaul University, Chicago ",
+    "videoUrl": "https://www.instagram.com/reel/DPNugS7DJZo/?igsh=NjJnb205Y20xbW9s"
+  },
+  {
+    "id": "2",
+    "name": "Султан ",
+    "university": "Illinois Wesleyan University ",
+    "videoUrl": "https://www.instagram.com/reel/DQyiSdJjIb8/?igsh=bWI3OTY4cG82YW1i"
+  },
+  {
+    "name": "Жулдыз",
+    "university": "New York University ",
+    "videoUrl": "https://www.instagram.com/reel/DP1GRJMDAsC/?igsh=M3ZlcW5uMnRmM3F6",
+    "id": "1785930244994",
+    "order": 2
+  }
+]

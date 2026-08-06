@@ -5,11 +5,13 @@ import Footer from '../components/Footer';
 import { FaGraduationCap, FaGlobeEurope, FaLeaf, FaMap } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { InstagramEmbed, TikTokEmbed } from 'react-social-media-embed';
+import ApplicationModal from '../components/ApplicationModal';
 import './LandingPage.css';
 
 const LandingPage = () => {
   const { t, loading } = useLanguage();
   const [reviews, setReviews] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     fetch('./data/reviews.json?t=' + new Date().getTime())
@@ -84,9 +86,9 @@ const LandingPage = () => {
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.6, duration: 0.8 }}
             >
-              <a href="https://wa.me/996222322632" target="_blank" rel="noreferrer" className="btn btn-primary mt-4">
+              <button onClick={() => setIsModalOpen(true)} className="btn btn-primary mt-4">
                 {t('hero.cta')}
-              </a>
+              </button>
             </motion.div>
           </div>
         </motion.div>
@@ -216,13 +218,14 @@ const LandingPage = () => {
         >
           <h2 className="gold-text">{t('cta.title')}</h2>
           <p>{t('cta.text')}</p>
-          <a href="https://wa.me/996222322632" target="_blank" rel="noreferrer" className="btn btn-primary mt-4">
+          <button onClick={() => setIsModalOpen(true)} className="btn btn-primary mt-3">
             {t('cta.btn')}
-          </a>
+          </button>
         </motion.div>
       </section>
 
       <Footer />
+      <ApplicationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>
   );
 };

@@ -11,7 +11,7 @@ const Footer = () => {
       <div className="container footer-content">
         <div className="footer-col">
           <div className="logo footer-logo" onClick={() => window.location.reload()} style={{ cursor: 'pointer' }}>
-            <img src="./logo-final.png" alt="Cardinal Education" className="header-logo-img" />
+            <img src="./logo-ce.png" alt="Cardinal Education" className="footer-logo-img" style={{ height: '50px', objectFit: 'contain' }} />
           </div>
           <p className="footer-copyright">{t('footer.copyright')}</p>
         </div>

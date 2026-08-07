@@ -199,6 +199,10 @@ const ApplicationModal = ({ isOpen, onClose }) => {
                     )}
                   </AnimatePresence>
 
+                  <div className="free-consultation-text" style={{ textAlign: 'center', color: 'var(--color-accent-gold)', fontSize: '0.9rem', marginTop: '5px', fontWeight: '500' }}>
+                    * Первая консультация бесплатно
+                  </div>
+
                   {status === 'error' && (
                     <div className="error-message">
                       Произошла ошибка при отправке. Пожалуйста, попробуйте позже.

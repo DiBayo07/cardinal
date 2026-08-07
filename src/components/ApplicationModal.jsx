@@ -64,7 +64,7 @@ const ApplicationModal = ({ isOpen, onClose }) => {
         body: JSON.stringify({
           fullName: formData.fullName,
           city: formData.city,
-          whatsapp: formData.whatsapp,
+          whatsapp: "'" + formData.whatsapp, // Одинарная кавычка предотвращает парсинг как формулы в Google Sheets
           grade: formData.grade,
           country: finalCountry
         })

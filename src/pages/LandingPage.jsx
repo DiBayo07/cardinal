@@ -4,14 +4,14 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { FaGraduationCap, FaGlobeEurope, FaLeaf, FaMap } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import { scroller } from 'react-scroll';
 import { InstagramEmbed, TikTokEmbed } from 'react-social-media-embed';
-import ApplicationModal from '../components/ApplicationModal';
+import ApplicationFormSection from '../components/ApplicationFormSection';
 import './LandingPage.css';
 
 const LandingPage = () => {
   const { t, loading } = useLanguage();
   const [reviews, setReviews] = useState([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     fetch('./data/reviews.json?t=' + new Date().getTime())
@@ -52,6 +52,15 @@ const LandingPage = () => {
     }
   };
 
+  const scrollToForm = () => {
+    scroller.scrollTo('application-form', {
+      duration: 800,
+      delay: 0,
+      smooth: 'easeInOutQuart',
+      offset: -70,
+    });
+  };
+
   return (
     <>
       <Header />
@@ -86,7 +95,7 @@ const LandingPage = () => {
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.6, duration: 0.8 }}
             >
-              <button onClick={() => setIsModalOpen(true)} className="btn btn-primary mt-4">
+              <button onClick={scrollToForm} className="btn btn-primary mt-4">
                 {t('hero.cta')}
               </button>
             </motion.div>
@@ -218,14 +227,14 @@ const LandingPage = () => {
         >
           <h2 className="gold-text">{t('cta.title')}</h2>
           <p>{t('cta.text')}</p>
-          <button onClick={() => setIsModalOpen(true)} className="btn btn-primary mt-3">
+          <button onClick={scrollToForm} className="btn btn-primary mt-3">
             {t('cta.btn')}
           </button>
         </motion.div>
       </section>
 
+      <ApplicationFormSection />
       <Footer />
-      <ApplicationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>
   );
 };

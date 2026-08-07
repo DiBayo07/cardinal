@@ -22,7 +22,7 @@ const Header = () => {
     <header className="header glass">
       <div className="container header-content">
         <div className="logo" onClick={() => window.location.reload()} style={{ cursor: 'pointer' }}>
-          <img src="./logo-v4.png" alt="Cardinal Education" className="header-logo-img" />
+          <img src="./logo-v5.png" alt="Cardinal Education" className="header-logo-img" />
         </div>
         
         <nav className="nav-menu">

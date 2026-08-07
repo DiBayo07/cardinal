@@ -53,7 +53,7 @@ const ApplicationModal = ({ isOpen, onClose }) => {
     const finalCountry = formData.country === 'Другая страна' ? formData.otherCountry : formData.country;
 
     try {
-      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzXzl3r3r-NBhk7whzu9ZD4qqTBV84pSOQeNTyV2J1Rl6xQ4wPQ9nVEBO5oxLJoUgmS3g/exec';
+      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxxKNexFilk_ZbQCWWZWs1J0zY0yZ-QLQMe24wNwYeuV0uV55PcB9w4--kgJpG4LLY1wQ/exec';
 
       await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',

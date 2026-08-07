@@ -55,8 +55,9 @@ const ApplicationModal = ({ isOpen, onClose }) => {
     try {
       const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzXzl3r3r-NBhk7whzu9ZD4qqTBV84pSOQeNTyV2J1Rl6xQ4wPQ9nVEBO5oxLJoUgmS3g/exec';
 
-      const response = await fetch(GOOGLE_SCRIPT_URL, {
+      await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
+        mode: 'no-cors',
         headers: {
           'Content-Type': 'text/plain;charset=utf-8',
         },
@@ -69,12 +70,9 @@ const ApplicationModal = ({ isOpen, onClose }) => {
         })
       });
       
-      const result = await response.json();
-      if (result.status === 'success') {
-        setStatus('success');
-      } else {
-        setStatus('error');
-      }
+      // При использовании mode: 'no-cors' ответ прочитать невозможно (он "opaque").
+      // Но если fetch не выбросил ошибку сети, значит запрос ушел успешно.
+      setStatus('success');
     } catch (error) {
       console.error('Error submitting form:', error);
       setStatus('error');

@@ -41,7 +41,7 @@ const ApplicationFormSection = () => {
     const finalCountry = formData.country === 'Другая страна' ? formData.otherCountry : formData.country;
 
     try {
-      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxxKNexFilk_ZbQCWWZWs1J0zY0yZ-QLQMe24wNwYeuV0uV55PcB9w4--kgJpG4LLY1wQ/exec';
+      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwnDnq-gZv1xDlxXYTOVOBJJsLu-L16wEmVnFvLbmHfIgf815LMm2_p8Ne6JN7e_74S/exec';
 
       await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',

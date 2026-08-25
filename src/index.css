@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Unbounded:wght@400;600;700;800&subset=cyrillic,cyrillic-ext&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
 
 :root {
   --color-bg: #0C0E12;
@@ -9,7 +9,7 @@
   --color-text-muted: rgba(255, 255, 255, 0.7);
   
   --font-sans: 'Montserrat', sans-serif;
-  --font-display: 'Unbounded', cursive;
+  --font-display: 'Montserrat', sans-serif;
   
   --gold-gradient: linear-gradient(0turn, var(--color-accent-gold-dark) 0%, var(--color-accent-gold) 100%);
   --red-gradient: linear-gradient(0.233turn, rgba(121,25,29,1) 0%, rgba(140,28,33,1) 55%, rgba(121,25,29,1) 100%);

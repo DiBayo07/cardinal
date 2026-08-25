@@ -7,10 +7,12 @@ import ApplicationFormSection from '../components/ApplicationFormSection';
 import { useLanguage } from '../context/LanguageContext';
 import './CountryLanding.css';
 
+const sharedBg = 'linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("https://images.unsplash.com/photo-1529154036614-a60975f5c760?auto=format&fit=crop&q=80")';
+
 const countryData = {
   italy: {
     formCountry: 'Италия',
-    bg: 'linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("https://images.unsplash.com/photo-1529154036614-a60975f5c760?auto=format&fit=crop&q=80")',
+    bg: sharedBg,
     ru: {
       title: 'Учеба в Италии',
       subtitle: 'Получите высшее образование в колыбели европейской культуры. Заполните анкету для бесплатной консультации!'
@@ -18,11 +20,15 @@ const countryData = {
     kg: {
       title: 'Италияда билим алуу',
       subtitle: 'Европа маданиятынын бешиги болгон өлкөдө жогорку билим алыңыз. Акысыз консультация үчүн анкетаны толтуруңуз!'
+    },
+    en: {
+      title: 'Study in Italy',
+      subtitle: 'Get higher education in the cradle of European culture. Fill out the form for a free consultation!'
     }
   },
   usa: {
     formCountry: 'США',
-    bg: 'linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&q=80")',
+    bg: sharedBg,
     ru: {
       title: 'Учеба в США',
       subtitle: 'Откройте двери в лучшие университеты мира. Заполните анкету для бесплатной консультации!'
@@ -30,11 +36,15 @@ const countryData = {
     kg: {
       title: 'АКШда билим алуу',
       subtitle: 'Дүйнөнүн эң мыкты университеттерине эшик ачыңыз. Акысыз консультация үчүн анкетаны толтуруңуз!'
+    },
+    en: {
+      title: 'Study in the USA',
+      subtitle: 'Open the doors to the best universities in the world. Fill out the form for a free consultation!'
     }
   },
   china: {
     formCountry: 'Китай',
-    bg: 'linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("https://images.unsplash.com/photo-1508804185872-d7bad6758715?auto=format&fit=crop&q=80")',
+    bg: sharedBg,
     ru: {
       title: 'Учеба в Китае',
       subtitle: 'Получите грант на обучение в одной из самых быстроразвивающихся стран мира. Оставьте заявку!'
@@ -42,11 +52,15 @@ const countryData = {
     kg: {
       title: 'Кытайда билим алуу',
       subtitle: 'Дүйнөдөгү эң тез өнүгүп жаткан өлкөлөрдүн биринде окуу үчүн грант алыңыз. Арыз калтырыңыз!'
+    },
+    en: {
+      title: 'Study in China',
+      subtitle: 'Get a scholarship to study in one of the fastest-growing countries in the world. Leave a request!'
     }
   },
   korea: {
     formCountry: 'Южная Корея',
-    bg: 'linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("https://images.unsplash.com/photo-1517154421773-0529f29ea451?auto=format&fit=crop&q=80")',
+    bg: sharedBg,
     ru: {
       title: 'Учеба в Южной Корее',
       subtitle: 'Современные технологии и богатая культура. Сделай первый шаг к обучению в Корее!'
@@ -54,6 +68,10 @@ const countryData = {
     kg: {
       title: 'Түштүк Кореяда билим алуу',
       subtitle: 'Заманбап технологиялар жана бай маданият. Кореяда окуу үчүн биринчи кадамды таштаңыз!'
+    },
+    en: {
+      title: 'Study in South Korea',
+      subtitle: 'Modern technology and rich culture. Take your first step towards studying in Korea!'
     }
   }
 };
@@ -66,7 +84,7 @@ const CountryLanding = () => {
 
   const defaultContent = {
     formCountry: '',
-    bg: 'var(--color-bg-dark)',
+    bg: sharedBg,
     ru: {
       title: 'Обучение за рубежом',
       subtitle: 'Заполните анкету, и мы подберем для вас идеальную страну и университет.'
@@ -74,11 +92,15 @@ const CountryLanding = () => {
     kg: {
       title: 'Чет өлкөдө билим алуу',
       subtitle: 'Анкетаны толтуруңуз, биз сизге эң ылайыктуу өлкөнү жана университетти тандап беребиз.'
+    },
+    en: {
+      title: 'Study Abroad',
+      subtitle: 'Fill out the form, and we will find the perfect country and university for you.'
     }
   };
 
   const currentCountry = country || defaultContent;
-  const langKey = language === 'kg' ? 'kg' : 'ru';
+  const langKey = language === 'kg' ? 'kg' : language === 'en' ? 'en' : 'ru';
   const content = currentCountry[langKey];
 
   return (

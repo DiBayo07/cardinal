@@ -4,14 +4,14 @@ import { IMaskInput } from 'react-imask';
 import { useLanguage } from '../context/LanguageContext';
 import './ApplicationFormSection.css';
 
-const ApplicationFormSection = () => {
+const ApplicationFormSection = ({ fixedCountry }) => {
   const { t } = useLanguage();
   const [formData, setFormData] = useState({
     fullName: '',
     city: '',
     whatsapp: '',
     grade: '',
-    country: '',
+    country: fixedCountry || '',
     otherCountry: ''
   });
   const [status, setStatus] = useState('idle'); // 'idle' | 'loading' | 'success' | 'error'
@@ -28,7 +28,7 @@ const ApplicationFormSection = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    if (!formData.fullName || !formData.city || !formData.whatsapp || !formData.grade || !formData.country) {
+    if (!formData.fullName || !formData.city || !formData.whatsapp || !formData.grade || (!formData.country && !fixedCountry)) {
       return;
     }
 
@@ -38,7 +38,7 @@ const ApplicationFormSection = () => {
 
     setStatus('loading');
 
-    const finalCountry = formData.country === 'Другая страна' ? formData.otherCountry : formData.country;
+    const finalCountry = fixedCountry || (formData.country === 'Другая страна' ? formData.otherCountry : formData.country);
 
     try {
       const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzKLjTrO1rSSccUbR1HK6t1mu5qcAyaH8eNaYyCiENIYFyQmviL-SaLRq1RvJ-2m6Re/exec';
@@ -71,7 +71,7 @@ const ApplicationFormSection = () => {
       city: '',
       whatsapp: '',
       grade: '',
-      country: '',
+      country: fixedCountry || '',
       otherCountry: ''
     });
     setStatus('idle');
@@ -147,20 +147,22 @@ const ApplicationFormSection = () => {
                   </select>
                 </div>
 
-                <div className="form-group">
-                  <label>В какую страну хотели бы поступить? *</label>
-                  <select name="country" value={formData.country} onChange={handleChange} required>
-                    <option value="" disabled>Выберите страну</option>
-                    <option value="США">США</option>
-                    <option value="Италия">Италия</option>
-                    <option value="Китай">Китай</option>
-                    <option value="Южная Корея">Южная Корея</option>
-                    <option value="Другая страна">Другая страна</option>
-                  </select>
-                </div>
+                {!fixedCountry && (
+                  <div className="form-group">
+                    <label>В какую страну хотели бы поступить? *</label>
+                    <select name="country" value={formData.country} onChange={handleChange} required>
+                      <option value="" disabled>Выберите страну</option>
+                      <option value="США">США</option>
+                      <option value="Италия">Италия</option>
+                      <option value="Китай">Китай</option>
+                      <option value="Южная Корея">Южная Корея</option>
+                      <option value="Другая страна">Другая страна</option>
+                    </select>
+                  </div>
+                )}
 
                 <AnimatePresence>
-                  {formData.country === 'Другая страна' && (
+                  {!fixedCountry && formData.country === 'Другая страна' && (
                     <motion.div 
                       className="form-group"
                       initial={{ opacity: 0, height: 0, overflow: 'hidden' }}
